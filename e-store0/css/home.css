@@ -1,0 +1,128 @@
+html{
+  scroll-behavior: smooth;
+}
+body{
+  margin: 0px;
+  padding: 0px;
+  background-color: #0001;
+}
+.submit{
+  padding: 5px;
+  cursor: pointer;
+}
+#top-selling{
+  width: 90%;
+  height: 75vh;
+  margin: auto;
+  padding: 15px;
+  display: block;
+}
+.caption{
+  display: block;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.products{
+  width: 24%;
+  height: 65vh;
+  margin-left: 10px;
+  float: left;
+  background-color: #fff;
+  padding: 20px 10px;
+  border-radius: 8px;
+}
+.products img{
+  width: 100%;
+  min-height: 70%;
+  margin: 15px 5px;
+  display: block;
+  border-radius: 5px;
+  background-color: #ccc;
+}
+.price{
+  font-weight: bolder;
+  margin: 10px 0px;
+}
+.products input{
+  width: 40%;
+  height: auto;
+  padding: 10px;
+  background-color: #ddd;
+  border: none;
+  border-radius: 7px;
+  transition: .6s;
+}
+.products input:hover{
+  position: relative;
+  top: 2px;
+  background-color: #f77;
+  cursor: pointer;
+}
+#deal-of-day{
+  width: 90%;
+  height: fit-contant;
+  margin: auto;
+  padding: 15px;
+  display: block;
+}
+#deal-of-day .products{
+  height: 75vh;
+}
+#deal-of-day .caption{
+  width: 100%;
+  height: auto;
+  display: block;
+  font-size: 20px;
+  margin-bottom: 20px;
+  background-color: #f03;
+  border-radius: 10px;
+  padding: 15px;
+}
+.price-sale{
+  margin: 10px 0px;
+  color: #0008;
+  text-decoration: line-through;
+}
+#choose-collection{
+  width: 90%;
+  height: 170vh;
+  margin: auto;
+  padding: 15px;
+  display: block;
+  background-color: #3f3;
+}
+#choose-collection .products{
+  margin-bottom: 20px;
+}
+.sign-in{
+  width: inherit;
+  height: auto;
+  margin: auto;
+  text-align: center;
+}
+.sign-in input{
+  width: 30vh;
+  padding: 8px;
+  display: block;
+  margin: 10px auto;
+  border: none;
+  border-radius: 5px;
+  background-color: #c33;
+  transition: .6s;
+}
+.sign-in input:hover{
+  position: relative;
+  top: 2px;
+  background-color: #88f;
+  cursor: pointer;
+}
+.sign-in a{
+  text-decoration: none;
+  color: #88f;
+  font-weight: bold;
+  transition: .6s;
+}
+.sign-in a:hover{
+  text-decoration: underline;
+  color: #41f;
+}
