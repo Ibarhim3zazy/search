@@ -1,0 +1,67 @@
+* {box-sizing:border-box}
+html{
+  scroll-behavior: smooth;
+}
+body{
+  margin: 0px;
+  padding: 0px;
+  background-color: #0001;
+}
+section{
+  width: 80%;
+  height: auto;
+  margin: auto;
+}
+.content{
+  width: 100%;
+  height: auto;
+  margin: 15px auto 20px auto;
+  float: left;
+}
+table th{
+  color: #0008;
+  padding: 15px;
+}
+table img{
+  max-width: 80px;
+  min-width: 60px;
+  min-height: 60px;
+  max-height: 80px;
+}
+table td{
+  max-width: 200px;
+  min-width: 60px;
+  min-height: 60px;
+  max-height: 80px;
+  color: #000;
+  font-size: 18px;
+  text-align: center;
+}
+.total{
+  display: block;
+  clear: both;
+  float: right;
+  margin: 40px 15% 0px 0px;
+  font-weight: bold;
+  font-size: 20px;
+}
+.delete_c{
+  width: auto;
+  height: auto;
+  padding: 20px;
+}
+.delete{
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  background-color: #ddd;
+  border: none;
+  border-radius: 7px;
+  transition: .6s;
+}
+.delete:hover{
+  position: relative;
+  top: 2px;
+  background-color: #f77;
+  cursor: pointer;
+}
