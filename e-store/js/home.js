@@ -18,7 +18,6 @@ function buy(id)
 		xmlhttp.onreadystatechange=function()
 		{
 			if (xmlhttp.readyState==4 && xmlhttp.status==200){
-				alert(xmlhttp.responseText);
 				document.getElementById("result").innerHTML=xmlhttp.responseText;
 			}
 		}
