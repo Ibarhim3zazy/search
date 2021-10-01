@@ -15,12 +15,12 @@
                 if ($s1 = $sn-> fetch_assoc()){
                   $ui= $s1['id'];
                 }}
-    if (isset($_POST['id'])== true) {
+     if (isset($_POST['id'])== true) {
       $i= $_POST['id'];
-      $con->query("UPDATE user_order SET quantity='0' WHERE user_id='$ui' AND product_id='$i'");
       $con->query("UPDATE products, user_order SET products.stock=products.stock+user_order.quantity WHERE products.id='$i'");
-      echo $i;
+      $con->query("UPDATE user_order SET quantity='0' WHERE user_id='$ui' AND product_id='$i'");
     }
+
 
     ?>
     <section>
