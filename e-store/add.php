@@ -1,7 +1,8 @@
-<?php require 'connection.php';
+<?php require("connection.php");
 if (isset($_GET['id']) == true) {
   $i= $_GET['id'];
   $q= $_GET['quantity'];
+  session_start();
   if (isset($_SESSION['name']) == true) {
     $n= $_SESSION['name'];
     $sn= $con->query("SELECT * FROM sign_up WHERE name LIKE '$n'");
@@ -12,7 +13,6 @@ if (isset($_GET['id']) == true) {
     if ($y['product_id'] == $i){
       $con->query("UPDATE products SET stock=stock-'$q' WHERE id='$i'");
      $q+= $y['quantity'];
-     echo $q;
      $con->query("UPDATE user_order SET quantity='$q' WHERE product_id='$i' AND user_id='$ui'");
    }}
    $z= $con-> affected_rows;
