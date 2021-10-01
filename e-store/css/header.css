@@ -88,7 +88,7 @@ header{
   height: 35px;
   margin: -10px 5px -0px -20px;
 }
-#search_btn:hover, .account:hover, .sign a:hover{
+#search_btn:hover, .account:hover, .sign a:hover, .sign input:hover{
   position: relative;
   top: 2px;
   cursor: pointer;
@@ -115,7 +115,7 @@ header{
   border-radius: 7px;
   z-index: 9999;
 }
-.sign a{
+.sign a,.sign input{
   width: 150px;
   height: 40px;
   padding: 10px 25px;
