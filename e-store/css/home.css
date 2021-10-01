@@ -53,6 +53,11 @@ body{
   border: none;
   border-radius: 7px;
   transition: .6s;
+  margin-right: 10px;
+}
+.products input[type=number]{
+  width: 20%;
+  margin-left: 10px;
 }
 .products input:hover{
   position: relative;

@@ -1,4 +1,7 @@
 <link rel="stylesheet" href="css/header.css">
+<script type="text/javascript" src="js/header.js">
+
+</script>
 <!-- ــــــــــــــــــــــــــــ -->
     <header>
       <div class="bar1">
@@ -25,13 +28,24 @@
           <img src="img/cart.ico"id="cart" alt="cart"> <span>Cart</span>
         </div></a>
         <div class="account">
-          <img src="img/account-pic.ico" id="profile-pic" alt="profile-pic">
+          <?php
+          session_start();
+          if (isset($_SESSION['name']) == true) {
+            $n= $_SESSION['name'];
+          $r= $con->query("SELECT * FROM sign_up WHERE name LIKE '$n'");
+            if ($x = $r-> fetch_assoc())
+            echo '<img src="'.$x['pic-path'].'" id="profile-pic" alt="profile-pic">';
+            else
+              echo '<img src="img/account-pic.ico" id="profile-pic" alt="profile-pic">';
+            } else
+              echo '<img src="img/account-pic.ico" id="profile-pic" alt="profile-pic">';
+          ?>
           <span>Account</span>
           <img src="img/up.png" id="up" alt="arrow">
           <div class="sign">
-            <a href="login.php">Sign in</a>
+            <a href="javascript:" onclick="sign_in()">Sign in</a>
             <span>OR</span>
-            <a href="signup.php">Sign up</a>
+            <a href="javascript:" onclick="sign_up()">Sign up</a>
           </div>
         </div>
 

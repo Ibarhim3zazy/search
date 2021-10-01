@@ -11,84 +11,65 @@
     <?php   require_once("connection.php");
       require 'header.php';
       require 'slider.php';
+      require_once 'login.php';
+      require_once 'signup.php';
      ?>
       <section id="top-selling">
        <span class="caption">Top selling items</span>
        <?php
        $r= $con->query("SELECT * FROM products WHERE top_selling");
        while ($x = $r-> fetch_assoc()){
-         if ($x['unit_price_sale'] > 0)
-          $u= $x['unit_price_sale'];
-           else {
-             $u= $x['unit-price'];
-           };
-       echo '
-       <div class="products">
-         <img src="'.$x['pic-path'].'"id="img9" alt="shoes">
-         <span id="n9">'.$x['name'].'</span>
-         <div class="price"><span id="p9">'.$u.'</span>$</div>
-        <form method="post">
-         <input class="login_text" type="hidden" name="id" value="'.$x['id'].'">
-         <input type="submit" value="Buy"><span>Quantity:</span><input type="number" name="quantity" value="1">
-        </form>
-       </div>';};
+         if ($x['stock']>'0') {
+           if ($x['unit_price_sale'] > 0)
+            $u= $x['unit_price_sale'];
+             else {
+               $u= $x['unit-price'];
+             };
+         echo '
+         <div class="products">
+           <img src="'.$x['pic-path'].'"id="img9" alt="shoes">
+           <span id="n9">'.$x['name'].'</span>
+           <div class="price"><span id="p9">'.$u.'</span>$</div>
+           <input class="login_text" type="hidden" id="'.$x['id'].'id" value="'.$x['id'].'">
+           <input type="button" onClick="buy('.$x['id'].')" value="Buy"><span>Quantity:</span><input type="number" id="'.$x['id'].'q" value="1">
+         </div>';};
+       };
        ?>
-     </section><a href="#" target="_parent"></a>
+     </section>
      <section id="deal-of-day">
        <span class="caption">Deal Of The Day | Deals You Don't Want To Miss</span>
        <?php
-       $r= $con->query("SELECT * FROM products WHERE unit_price_sale");
-       while ($x = $r-> fetch_assoc()){
+       $r1= $con->query("SELECT * FROM products WHERE unit_price_sale");
+       while ($x1 = $r1-> fetch_assoc()){
        echo '
        <div class="products">
-         <img src="'.$x['pic-path'].'"id="img9" alt="shoes">
-         <span id="n9">'.$x['name'].'</span>
-         <div class="price"><span id="p9">'.$x['unit_price_sale'].'</span>$</div>
-        <div class="price-sale"><span>'.$x['unit-price'].'</span>$</div>
-        <form method="post">
-         <input class="login_text" type="hidden" name="id" value="'.$x['id'].'">
-         <input type="submit" value="Buy"><span>Quantity:</span><input type="number" name="quantity" value="1">
-        </form>
-        </form>
+         <img src="'.$x1['pic-path'].'"id="img9" alt="shoes">
+         <span id="n9">'.$x1['name'].'</span>
+         <div class="price"><span id="p9">'.$x1['unit_price_sale'].'</span>$</div>
+        <div class="price-sale"><span>'.$x1['unit-price'].'</span>$</div>
+        <input class="login_text" type="hidden" id="'.$x1['id'].'id" value="'.$x1['id'].'">
+        <input type="button" onClick="buy('.$x1['id'].')" value="Buy"><span>Quantity:</span><input type="number" id="'.$x1['id'].'q" value="1">
        </div>';};
        ?>
      </section>
      <section id="choose-collection">
        <span class="caption">Choose Your Collection</span>
      <?php
-     $r= $con->query("SELECT * FROM products WHERE stock");
-     while ($x = $r-> fetch_assoc()){
-       if ($x['unit_price_sale'] > 0)
-        $u= $x['unit_price_sale'];
+     $r2= $con->query("SELECT * FROM products WHERE stock");
+     while ($x2 = $r2-> fetch_assoc()){
+       if ($x2['unit_price_sale'] > 0)
+        $u= $x2['unit_price_sale'];
          else {
-           $u= $x['unit-price'];
+           $u= $x2['unit-price'];
          };
      echo '
      <div class="products">
-       <img src="'.$x['pic-path'].'"id="img9" alt="shoes">
-       <span id="n9">'.$x['name'].'</span>
+       <img src="'.$x2['pic-path'].'"id="img9" alt="shoes">
+       <span id="n9">'.$x2['name'].'</span>
        <div class="price"><span id="p9">'.$u.'</span>$</div>
-       <form method="post">
-        <input class="login_text" type="hidden" name="id" value="'.$x['id'].'">
-        <input type="submit" value="Buy"><span>Quantity:</span><input type="number" name="quantity" value="1">
-       </form>
+       <input class="login_text" type="hidden" id="'.$x2['id'].'id" value="'.$x2['id'].'">
+       <input type="button" onClick="buy('.$x2['id'].')" value="Buy"><span>Quantity:</span><input type="number" id="'.$x2['id'].'q" value="1">
      </div>';};
-     if (isset($_POST['id'])) {
-       $i= $_POST['id'];
-       $q= $_POST['quantity'];
-       $o= $con->query("SELECT * FROM user_order WHERE product_id LIKE '$i'");
-       while ($y= $o-> fetch_assoc()) {
-         if ($y['product_id'] == $i){
-          $q+= $y['quantity'];
-          $con->query("UPDATE products, user_order SET products.add_prod='1', user_order.quantity='$q' WHERE products.id='$i' AND user_order.product_id='$i'");
-        }}
-        $z= $con-> affected_rows;
-        if ($z == 0) {
-          $con->query("INSERT INTO user_order VALUES(NULL, '1', '$i', '$q', 'NULL');");
-          $q+= $y['quantity'];
-          $con->query("UPDATE products, user_order SET products.add_prod='1', user_order.quantity='$q' WHERE products.id='$i' AND user_order.product_id='$i'");
-        }
-     };
      ?>
    </section>
      <br><hr><br>
@@ -98,6 +79,9 @@
        <span>New customer? <a href="signup.php" id="login">Start here</a>.</span>
      </div>
      <br><hr>
-     <?php require 'footer.php'; ?>
+     <?php require_once 'footer.php'; ?>
+     <div id="result">
+
+     </div>
   </body>
 </html>
