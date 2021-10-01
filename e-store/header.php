@@ -32,9 +32,18 @@
           session_start();
           if (isset($_SESSION['name']) == true) {
             $n= $_SESSION['name'];
+            if(isset($_POST['logout']) == true){
+              unset($_SESSION);
+              session_destroy();
+            }
           $r= $con->query("SELECT * FROM sign_up WHERE name LIKE '$n'");
             if ($x = $r-> fetch_assoc())
-            echo '<img src="'.$x['pic-path'].'" id="profile-pic" alt="profile-pic">';
+            echo '<img src="'.$x['pic-path'].'" onload="display_n()" id="profile-pic" alt="profile-pic">
+            <div class="sign">
+            <form action="index.php" method="post">
+              <input type="submit" name="logout" value="log out">
+            </form>
+            </div>';
             else
               echo '<img src="img/account-pic.ico" id="profile-pic" alt="profile-pic">';
             } else
@@ -42,7 +51,7 @@
           ?>
           <span>Account</span>
           <img src="img/up.png" id="up" alt="arrow">
-          <div class="sign">
+          <div class="sign" id="none">
             <a href="javascript:" onclick="sign_in()">Sign in</a>
             <span>OR</span>
             <a href="javascript:" onclick="sign_up()">Sign up</a>
