@@ -1,7 +1,5 @@
 <link rel="stylesheet" href="css/header.css">
-<script type="text/javascript" src="js/header.js">
-
-</script>
+<script type="text/javascript" src="js/header.js"></script>
 <!-- ــــــــــــــــــــــــــــ -->
     <header>
       <div class="bar1">
@@ -40,6 +38,7 @@
             if ($x = $r-> fetch_assoc())
             echo '<img src="'.$x['pic-path'].'" onload="display_n()" id="profile-pic" alt="profile-pic">
             <div class="sign">
+            <a href="add_products.php">add products</a>
             <form action="index.php" method="post">
               <input type="submit" name="logout" value="log out">
             </form>
@@ -53,7 +52,6 @@
           <img src="img/up.png" id="up" alt="arrow">
           <div class="sign" id="none">
             <a href="javascript:" onclick="sign_in()">Sign in</a>
-            <span>OR</span>
             <a href="javascript:" onclick="sign_up()">Sign up</a>
           </div>
         </div>
@@ -67,3 +65,4 @@
         <a href="about.php"></a>
       </div>
     </header>
+    <div class="free_size_for_header"></div>
