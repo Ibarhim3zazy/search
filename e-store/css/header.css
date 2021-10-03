@@ -120,7 +120,6 @@ header{
 	left: -20px;
 	margin-top: 0px;
   border-radius: 7px;
-  z-index: 9999;
 }
 .sign a,.sign input{
   min-width: 200px;

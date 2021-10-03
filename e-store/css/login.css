@@ -1,17 +1,16 @@
-*{ box-sizing: border-box; }
+*{
+  box-sizing: border-box;
+  font-family: cursive;
+ }
 html{
   scroll-behavior: smooth;
-}
-body{
-  margin: 0px;
-  padding: 0px;
-  background-color: #cccc;
 }
 .signup_form{
   width: 450px;
   height: auto;
+  max-height: 85vh;
   background-color: #811d;
-  margin: 50px auto auto auto;
+  margin: 15vh auto auto auto;
   text-align: center;
   padding: 10px 30px 50px 30px;
   border-radius: 50px;
@@ -19,23 +18,63 @@ body{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -60%);
+  z-index: 99991;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.signup_form::-webkit-scrollbar {
+  width: 10px;
+}
+
+.signup_form::-webkit-scrollbar-track {
+  background: #c1c1c1;
+  margin: 45px 0px;
+
+  border-radius: 10px;
+}
+.signup_form::-webkit-scrollbar-thumb {
+  background: #0009;
+  border-radius: 10px;
+}
+.signup_form::-webkit-scrollbar-thumb:hover {
+  background: #000c;
+}
+.hint{
+  margin:auto;
+  border-radius: 10px;
+  height: auto;
+  padding: 15px 10px;
+  width: 80%;
+  background-Color: #222c;
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+}
+.container_iu{
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff3;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
 }
 #close{
   width: 40px;
   height: auto;
   position: absolute;
-  right: -40px;
-  top: -20px;
+  right: 10px;
+  top: 15px;
 }
 #close:hover{
   cursor: pointer;
   background-color: #fffc;
   border-radius: 10px;
 }
-#sign_in{
+#sign_in, .container_iu{
   display: none;
 }
-#sign_up{
+#sign_up, .container_iu{
   display: none;
 }
 .login_button{

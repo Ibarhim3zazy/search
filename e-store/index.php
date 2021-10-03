@@ -11,8 +11,6 @@
     <?php   require_once("connection.php");
       require 'header.php';
       require 'slider.php';
-      require_once 'login.php';
-      require_once 'signup.php';
      ?>
       <section id="top-selling">
        <span class="caption">Top selling items</span>

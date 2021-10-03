@@ -1,6 +1,11 @@
 <link rel="stylesheet" href="css/header.css">
 <script type="text/javascript" src="js/header.js"></script>
 <!-- ــــــــــــــــــــــــــــ -->
+    <?php
+      session_start();
+      require_once 'login.php';
+      require_once 'signup.php';
+     ?>
     <header>
       <div class="bar1">
         <a href="index.php"><img src="img/logo.png" alt="estore" id="logo"></a>
@@ -27,7 +32,6 @@
         </div></a>
         <div class="account">
           <?php
-          session_start();
           if (isset($_SESSION['name']) == true) {
             $n= $_SESSION['name'];
             if(isset($_POST['logout']) == true){

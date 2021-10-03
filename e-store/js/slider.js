@@ -3,7 +3,9 @@ showSlides(slideIndex);
 
 // Next/previous controls
 function plusSlides(n) {
-    showSlides(slideIndex += n);
+    setTimeout(function plusSlides() {
+      showSlides(slideIndex += n);
+    }, 1000);
 }
 // Thumbnail image controls
 function currentSlide(n) {

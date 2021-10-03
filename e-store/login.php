@@ -4,17 +4,16 @@
       if (isset($_POST['name']) == true) {
         $n= $_POST['name'];
         $p= $_POST['pass'];
-        $result= $con->query("SELECT * FROM sign_up WHERE name='$n' OR email= '$n' AND pass= '$p';");
+        $result= $con->query("SELECT * FROM sign_up WHERE name='$n' AND pass= '$p' OR email= '$n' AND pass= '$p';");
         $num= $con-> affected_rows;
-        if($num == 0){
-        echo "Login failed";
-        } else {
+        if($num != 0){
           $_SESSION['name']= $n;
           $_SESSION['pass']= $p;
           header("location: index.php");
         }
       }
      ?>
+     <div class="container_iu"></div>
     <form class="signup_form" id="sign_in" method="post">
       <img src="img/close.png" alt="close" onclick="sign_hide()" id="close">
       <img src="img/logo.png" width="250" alt="">
